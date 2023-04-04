@@ -1,24 +1,30 @@
-import logo from './logo.svg';
+
+import { Container, Grid } from '@material-ui/core';
 import './App.css';
+import Header from './components/Header';
+import Post from './components/Post';
+import Postcard from './components/Postcard';
+import { posts } from './Data/Data';
+import Footer from './components/Footer';
+
+
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Container>
+      <Header />
+      <Post />
+      <br></br>
+      <Grid container spacing={4}>
+        {
+          posts.map((post)=>(
+            <Postcard post={post} key={post.title}/>
+          ))
+        }
+
+      </Grid>
+      <Footer/>
+    </Container>
   );
 }
 
